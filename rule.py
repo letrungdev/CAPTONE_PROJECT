@@ -50,15 +50,16 @@ def SC(text):
     return tokenize, pos, dependency
 
 
-def rule1(text, opinion_file):
+def rule1(text, opinion_file, target_file):
     list_target = []
     tokenize, pos, dependency = SC(text)
     tokenize = np.array(tokenize)
     for index, i in enumerate(pos):
         if i[1] in adj_pos:
             # NOTE
-            with open(opinion_file) as opinion_file:
-                if i[0] in opinion_file.read():
+            with open(opinion_file) as f:
+                if i[0] in f.read():
+                    f.close()
                     for j in dependency:
                         if j[2] == (index + 1) and j[0] in MR:
                             relate_word_position = j[1]
@@ -76,7 +77,7 @@ def rule1(text, opinion_file):
                                             # O-->O-dep-->H<--T-dep<--T
     list_target = list(set(list_target))
     print(list_target)
-    with open("target.txt") as f:
+    with open(target_file, "r+") as f:
         for n in list_target:
             if n not in f.read():
                 f.write(n + "\n")
@@ -111,7 +112,7 @@ def rule2(text, target_file, opinion_file):
                                                 # O-->O-dep-->H<--T-dep<--T
     list_opinion = list(set(list_opinion))
     print(list_opinion)
-    with open(opinion_file) as f:
+    with open(opinion_file, "r+") as f:
         for n in list_opinion:
             if n not in f.read():
                 f.write(n + "\n")
@@ -145,7 +146,7 @@ def rule3(text, target_file):
                                             # Ti →Ti-Dep→ H ←Tj-Dep← Tj
     list_target = list(set(list_target))
     print(list_target)
-    with open(target_file) as f:
+    with open(target_file, "r+") as f:
         for n in list_target:
             if n not in f.read():
                 f.write(n + "\n")
@@ -178,7 +179,7 @@ def rule4(text, opinion_file):
                                             # Oi →Oi-Dep→ H ←Oj-Dep← Oj
     list_opinion = list(set(list_opinion))
     print(list_opinion)
-    with open(opinion_file) as f:
+    with open(opinion_file, "r+") as f:
         for n in list_opinion:
             if n not in f.read():
                 f.write(n + "\n")

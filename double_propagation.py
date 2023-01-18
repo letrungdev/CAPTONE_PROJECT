@@ -37,7 +37,7 @@ def double_propagation(file):
     for review in reviews:
         sentences = sent_tokenize(str(review))
         for sentence in sentences:
-            rule.rule1(sentence, opinion_file)
+            rule.rule1(sentence, opinion_file, target_file)
             rule.rule4(sentence, opinion_file)
 
     for review in reviews:
