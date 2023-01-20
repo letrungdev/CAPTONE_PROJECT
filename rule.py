@@ -8,37 +8,6 @@ modifiers = ["amod", "advmod", "rcmod", "pnmod"]
 MR = ["amod", "advmod", "rcmod", "s", "subj", "obj", "nsubj"]
 noun_pos = ["NN", "NNS", "NNP"]
 adj_pos = ["JJ", "JJS", "JJR"]
-file_target = "target.txt"
-
-
-def seed_opinion():
-    list_opinion = []
-    positive_opinion_fp = "opinion-lexicon/positive-words.txt"
-    negative_opinion_fp = "opinion-lexicon/negative-words.txt"
-    f = open(positive_opinion_fp)
-    g = open(negative_opinion_fp)
-    for word in f.readlines()[30:]:
-        list_opinion.append(word.replace("\n", ""))
-    for word in g.readlines()[30:]:
-        list_opinion.append(word.replace("\n", ""))
-    f.close()
-    g.close()
-    list_opinion = list(set(list_opinion))
-    return list_opinion
-
-
-opinions = seed_opinion()
-
-
-def seed_target():
-    list_target = []
-    f = open(file_target)
-    for word in f.readlines():
-        list_target.append(word.replace("\n", ""))
-    f.close()
-    return list_target
-
-# targets = seed_target()
 
 
 def SC(text):
@@ -50,7 +19,7 @@ def SC(text):
     return tokenize, pos, dependency
 
 
-def rule1(text, opinion_file, target_file):
+def rule1(text, opinion_file):
     list_target = []
     tokenize, pos, dependency = SC(text)
     tokenize = np.array(tokenize)
@@ -75,15 +44,12 @@ def rule1(text, opinion_file, target_file):
                                             t = tokenize[relate_word_position-1]
                                             list_target.append(t)
                                             # O-->O-dep-->H<--T-dep<--T
+
     list_target = list(set(list_target))
-    print(list_target)
-    with open(target_file, "r+") as f:
-        for n in list_target:
-            if n not in f.read():
-                f.write(n + "\n")
+    return list_target
 
 
-def rule2(text, target_file, opinion_file):
+def rule2(text, target_file):
     list_opinion = []
     tokenize, pos, dependency = SC(text)
     tokenize = np.array(tokenize)
@@ -111,11 +77,7 @@ def rule2(text, target_file, opinion_file):
                                                 list_opinion.append(o)
                                                 # O-->O-dep-->H<--T-dep<--T
     list_opinion = list(set(list_opinion))
-    print(list_opinion)
-    with open(opinion_file, "r+") as f:
-        for n in list_opinion:
-            if n not in f.read():
-                f.write(n + "\n")
+    return list_opinion
 
 
 def rule3(text, target_file):
@@ -145,11 +107,7 @@ def rule3(text, target_file):
                                             list_target.append(t)
                                             # Ti →Ti-Dep→ H ←Tj-Dep← Tj
     list_target = list(set(list_target))
-    print(list_target)
-    with open(target_file, "r+") as f:
-        for n in list_target:
-            if n not in f.read():
-                f.write(n + "\n")
+    return list_target
 
 
 def rule4(text, opinion_file):
@@ -178,11 +136,8 @@ def rule4(text, opinion_file):
                                             list_opinion.append(o)
                                             # Oi →Oi-Dep→ H ←Oj-Dep← Oj
     list_opinion = list(set(list_opinion))
-    print(list_opinion)
-    with open(opinion_file, "r+") as f:
-        for n in list_opinion:
-            if n not in f.read():
-                f.write(n + "\n")
+    return list_opinion
+
 
 
 

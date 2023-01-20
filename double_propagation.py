@@ -3,9 +3,9 @@ import pandas as pd
 from nltk.tokenize import sent_tokenize
 
 
-file = "Data/amazon_reviews.csv"
-opinion_file = "opinion.txt"
-target_file = "target.txt"
+data_file = "Data/Amazon_Mobile.csv"
+opinion_file = "extracted/opinion.txt"
+target_file = "extracted/target.txt"
 
 
 def seed_opinion():
@@ -27,30 +27,92 @@ def seed_opinion():
     f.close()
 
 
-f = open("target.txt")
-g = open("opinion.txt")
+f = open("extracted/target.txt")
+g = open("extracted/opinion.txt")
+
+
+def preprocessing(text):
+    text = text.lower()
+    return text
 
 
 def double_propagation(file):
     df = pd.read_csv(file)
-    reviews = df["reviewText"].tolist()[:10]
-    for review in reviews:
-        sentences = sent_tokenize(str(review))
-        for sentence in sentences:
-            rule.rule1(sentence, opinion_file, target_file)
-            rule.rule4(sentence, opinion_file)
+    print("Read file: Done")
+    reviews = df["Reviews"].tolist()[:10]
 
     for review in reviews:
-        sentences = sent_tokenize(str(review))
-        for sentence in sentences:
-            rule.rule3(sentence, target_file)
-            rule.rule2(sentence, target_file, opinion_file)
+        review = preprocessing(review)
+        print(review)
+        number_of_words = len(review.split())
+        if number_of_words > 2:
+            sentences = sent_tokenize(str(review))
+            for sentence in sentences:
+                print(sentence)
+                targets = rule.rule1(sentence, opinion_file)
+                print(targets)
+                with open(target_file, "r+") as f:
+                    for n in targets:
+                        if n not in f.read():
+                            f.write(n + "\n")
+                f.close()
+
+                opinions = rule.rule4(sentence, opinion_file)
+                print(opinions)
+                with open(opinion_file, "r+") as f:
+                    for n in opinions:
+                        if n not in f.read():
+                            f.write(n + "\n")
+                f.close()
+
+    for review in reviews:
+        review = preprocessing(review)
+        print(review)
+        number_of_words = len(review.split())
+        if number_of_words > 2:
+            sentences = sent_tokenize(str(review))
+            for sentence in sentences:
+                print(sentence)
+                targets = rule.rule3(sentence, target_file)
+                print(targets)
+                with open(target_file, "r+") as f:
+                    for n in targets:
+                        if n not in f.read():
+                            f.write(n + "\n")
+                f.close()
+
+                opinions = rule.rule2(sentence, target_file)
+                print(opinions)
+                with open(opinion_file, "r+") as f:
+                    for n in opinions:
+                        if n not in f.read():
+                            f.write(n + "\n")
+                f.close()
+
+
+
+
+
 
 
 # seed_opinion()
-double_propagation(file)
+# double_propagation(data_file)
 
 
+prunning(data_file, target_file)
 
 
+def extract(data_file, target_file_final):
+    df = pd.read_csv(data_file)
+    print("Read file: Done")
+    reviews = df["Reviews"].tolist()[:10]
+
+    f = open(target_file_final)
+    list_target = [line.replace("\n", "") for line in f.readlines()]
+    target_frequency = {}
+    for review in reviews:
+        number_of_words = len(review.split())
+        if number_of_words > 2:
+            sentences = sent_tokenize(str(review))
+            for sentence in sentences:
 

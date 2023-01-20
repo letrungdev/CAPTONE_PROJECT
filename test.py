@@ -6,3 +6,11 @@
 # introduction_doc = nlp(introduction_text)
 # displacy.serve(introduction_doc, style='dep')
 
+# handle type mistakes
+# import difflib
+#
+# print(difflib.get_close_matches('sound-effect', ['sound effects', 'animal', 'house', 'animation']))
+
+
+
+
