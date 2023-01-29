@@ -1,7 +1,7 @@
 from rule import SC
 import numpy as np
 from nltk.tokenize import sent_tokenize
-import pandas as pd
+import json
 
 
 noun_pos = ["NN", "NNS", "NNP"]
@@ -16,11 +16,15 @@ def preprocessing(text):
 
 def extract(review, aspect_dictionary):
     extracted = {}
+    f = open(aspect_dictionary)
+    aspect_dictionary = json.load(f)
     for aspect in aspect_dictionary:
         extracted[aspect] = []
     review = preprocessing(review)
+
     sentences = sent_tokenize(str(review))
     for sentence in sentences:
+        print(sentence)
         tokenize, pos, dependency = SC(sentence)
         tokenize = np.array(tokenize)
         for index, i in enumerate(pos):
@@ -33,6 +37,7 @@ def extract(review, aspect_dictionary):
                                     relate_word_position = j[2]
                                     if pos[relate_word_position - 1][1] in adj_pos:
                                         o = tokenize[relate_word_position - 1]
+                                        print(o)
                                         if o not in extracted[aspect]:
                                             extracted[aspect].append(o)
 

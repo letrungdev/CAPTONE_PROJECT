@@ -10,16 +10,19 @@ if __name__ == "__main__":
     extracted_opinion_file = "extracted/opinion.txt"
     stop_word_file = "stop_word/stop_words.txt"
     embeddings = "word-embeddings/pruned.word2vec.txt"
+    aspect_dictionary_file = "target_dictionary.json"
 
     df = pd.read_csv(review_file)
-    reviews = df["Reviews"].tolist()[:10]
+    reviews = df["Reviews"].tolist()[:50]
 
     # extract new target and opinion word to extracted folder
-    double_propagation(reviews, extracted_target_file, extracted_opinion_file)
+    # double_propagation(reviews, extracted_target_file, extracted_opinion_file)
+
     # remove noise word
-    aspect_dictionary = prunning(review_file, extracted_target_file, stop_word_file, embeddings)
+    prunning(review_file, extracted_target_file, stop_word_file, embeddings)
+
     # extract target with opinion
     for review in reviews:
-        extracted = extract(review_file, aspect_dictionary)
+        extracted = extract(review, aspect_dictionary_file)
         print(extracted)
 

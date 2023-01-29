@@ -4,7 +4,7 @@ from nltk import sent_tokenize
 import gensim
 from collections import Counter
 from difflib import SequenceMatcher
-
+import json
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -77,8 +77,11 @@ def prunning(review_file, extracted_target_file, stop_word_file, embeddings):
     targets = extracted_target(extracted_target_file, stop_word_file)
     top = top_target(targets, review_file)
     print(top)
-    expand = expand_target(extracted_target, top, embeddings)
+    expand = expand_target(targets, top, embeddings)
     print(expand)
+    with open('target_dictionary.json', 'w') as fp:
+        json.dump(expand, fp, indent=4, ensure_ascii=False)
+
     return expand
 
 

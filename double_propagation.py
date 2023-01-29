@@ -60,6 +60,7 @@ def double_propagation(reviews, target_file, opinion_file):
         if number_of_words > 2:
             sentences = sent_tokenize(str(review))
             for sentence in sentences:
+                print(sentence)
                 targets = rule.rule3(sentence, target_file)
                 print("Extracted targets by Rule 3:", targets)
                 with open(target_file, "r+") as f:
