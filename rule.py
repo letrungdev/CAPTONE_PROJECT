@@ -25,7 +25,6 @@ def rule1(text, opinion_file):
     tokenize = np.array(tokenize)
     for index, i in enumerate(pos):
         if i[1] in adj_pos:
-            # NOTE
             with open(opinion_file) as f:
                 if i[0] in f.read():
                     f.close()
