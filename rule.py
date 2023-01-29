@@ -59,14 +59,14 @@ def rule2(text, target_file):
                     f.close()
                     for j in dependency:
                         if j[0] in MR:
-                            if j[1] == (index + 1):
-                                relate_word_position = j[2]
+                            if j[2] == (index + 1):
+                                relate_word_position = j[1]
                                 if pos[relate_word_position - 1][1] in adj_pos:
                                     o = tokenize[relate_word_position - 1]
                                     list_opinion.append(o)
                                     # O-->O-dep-->T
-                            elif j[2] == (index + 1):
-                                relate_word_position = j[1]
+                            elif j[1] == (index + 1):
+                                relate_word_position = j[2]
                                 for j in dependency:
                                     if j[0] in MR:
                                         if j[2] != (index + 1) and j[1] == relate_word_position:

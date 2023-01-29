@@ -56,3 +56,6 @@
 #
 # print(synonyms)
 
+from rule import SC
+text = "phone looks good but wouldn't stay charged, had to buy new battery."
+print(SC(text))

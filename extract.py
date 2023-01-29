@@ -30,27 +30,16 @@ def extract(review, aspect_dictionary):
         for index, i in enumerate(pos):
             if i[1] in noun_pos:
                 for aspect in aspect_dictionary:
-                    if i[1] in aspect_dictionary[aspect]:
+                    if i[0] in aspect_dictionary[aspect]:
                         for j in dependency:
+                            print(j)
                             if j[0] in MR:
-                                if j[1] == (index + 1):
-                                    relate_word_position = j[2]
+                                if j[2] == (index + 1):
+                                    relate_word_position = j[1]
                                     if pos[relate_word_position - 1][1] in adj_pos:
                                         o = tokenize[relate_word_position - 1]
-                                        print(o)
                                         if o not in extracted[aspect]:
                                             extracted[aspect].append(o)
-
-                                elif j[2] == (index + 1):
-                                    relate_word_position = j[1]
-                                    for j in dependency:
-                                        if j[0] in MR:
-                                            if j[2] != (index + 1) and j[1] == relate_word_position:
-                                                relate_word_position = j[2]
-                                                if pos[relate_word_position-1][1] in adj_pos:
-                                                    o = tokenize[relate_word_position - 1]
-                                                    if o not in extracted[aspect]:
-                                                        extracted[aspect].append(o)
     return extracted
 
 

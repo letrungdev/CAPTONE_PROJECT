@@ -1,0 +1,21 @@
+{
+    "phone": [
+        "phone"
+    ],
+    "battery": [
+        "battery"
+    ],
+    "size": [
+        "size"
+    ],
+    "button": [
+        "button"
+    ],
+    "media": [
+        "media"
+    ],
+    "port": [
+        "port",
+        "ship"
+    ]
+}
