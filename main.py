@@ -1,5 +1,6 @@
 from double_propagation import double_propagation
 from prunning import prunning
+from opinion_for_aspect import opinion_for_aspect
 from extract import extract
 import pandas as pd
 
@@ -12,18 +13,16 @@ if __name__ == "__main__":
     embeddings = "word-embeddings/pruned.word2vec.txt"
     aspect_dictionary_file = "target_dictionary.json"
 
-    # df = pd.read_csv(review_file)
-    # reviews = df["Reviews"].tolist()[:50]
+    df = pd.read_csv(review_file)
+    reviews = df["Reviews"].tolist()
 
     # extract new target and opinion word to extracted folder
     # double_propagation(reviews, extracted_target_file, extracted_opinion_file)
 
-    # remove noise word
-    # prunning(review_file, extracted_target_file, stop_word_file, embeddings)
+    # prunning(extracted_target_file, stop_word_file, embeddings)
 
     # extract target with opinion
-    reviews = ["this phone works great"]
-    for review in reviews:
-        extracted = extract(review, aspect_dictionary_file)
-        print(extracted)
+    opinion_for_aspect(reviews[:10], aspect_dictionary_file)
+
+
 

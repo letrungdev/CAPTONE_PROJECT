@@ -4,7 +4,6 @@ import logging
 
 
 corenlp_path = "stanford-corenlp-4.5.1"
-modifiers = ["amod", "advmod", "rcmod", "pnmod"]
 MR = ["amod", "advmod", "rcmod", "s", "subj", "obj", "nsubj"]
 noun_pos = ["NN", "NNS", "NNP"]
 adj_pos = ["JJ", "JJS", "JJR"]
@@ -43,6 +42,12 @@ def rule1(text, opinion_file):
                                             t = tokenize[relate_word_position-1]
                                             list_target.append(t)
                                             # O-->O-dep-->H<--T-dep<--T
+                        elif j[1] == (index + 1) and j[0] in MR:
+                            relate_word_position = j[2]
+                            if pos[relate_word_position-1][1] in noun_pos:
+                                t = tokenize[relate_word_position-1]
+                                list_target.append(t)
+                                # T-->T-dep-->O
 
     list_target = list(set(list_target))
     return list_target

@@ -32,7 +32,6 @@ def extract(review, aspect_dictionary):
                 for aspect in aspect_dictionary:
                     if i[0] in aspect_dictionary[aspect]:
                         for j in dependency:
-                            print(j)
                             if j[0] in MR:
                                 if j[2] == (index + 1):
                                     relate_word_position = j[1]
@@ -40,6 +39,7 @@ def extract(review, aspect_dictionary):
                                         o = tokenize[relate_word_position - 1]
                                         if o not in extracted[aspect]:
                                             extracted[aspect].append(o)
+
     return extracted
 
 

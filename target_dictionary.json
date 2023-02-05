@@ -1,21 +1,51 @@
 {
     "phone": [
-        "phone"
+        "phone",
+        "phones"
+    ],
+    "product": [
+        "product"
+    ],
+    "camera": [
+        "camera"
+    ],
+    "price": [
+        "price"
+    ],
+    "screen": [
+        "screen",
+        "screens"
+    ],
+    "card": [
+        "card",
+        "cards"
+    ],
+    "quality": [
+        "quality"
+    ],
+    "keyboard": [
+        "keyboard"
+    ],
+    "esn": [
+        "esn"
     ],
     "battery": [
         "battery"
     ],
-    "size": [
-        "size"
+    "condition": [
+        "condition"
     ],
-    "button": [
-        "button"
+    "choice": [
+        "choice"
     ],
-    "media": [
-        "media"
+    "reception": [
+        "reception",
+        "buyreception"
     ],
-    "port": [
-        "port",
-        "ship"
+    "people": [
+        "people"
+    ],
+    "something": [
+        "something"
     ]
 }

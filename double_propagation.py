@@ -1,6 +1,8 @@
 import rule
 import pandas as pd
 from nltk.tokenize import sent_tokenize
+import re
+from preprocessing import preprocessing
 
 
 # combine word from negative and positive file
@@ -23,35 +25,28 @@ def seed_opinion(opinion_file):
     f.close()
 
 
-def preprocessing(text):
-    text = text.lower()
-    return text
-
-
 def double_propagation(reviews, target_file, opinion_file):
     for review in reviews:
         review = preprocessing(review)
         print(review)
-        number_of_words = len(review.split())
-        if number_of_words > 2:
+        if len(review.split()) > 1:
             sentences = sent_tokenize(str(review))
             for sentence in sentences:
                 print(sentence)
                 targets = rule.rule1(sentence, opinion_file)
                 print("Extracted targets by Rule 1:", targets)
-                with open(target_file, "r+") as f:
+                with open(target_file, "a+") as f:
                     for n in targets:
-                        if n not in f.read():
-                            f.write(n + "\n")
+                        f.write(n + "\n")
                 f.close()
 
-                opinions = rule.rule4(sentence, opinion_file)
-                print("Extracted opinions by Rule 4: ", opinions)
-                with open(opinion_file, "r+") as f:
-                    for n in opinions:
-                        if n not in f.read():
-                            f.write(n + "\n")
-                f.close()
+                # opinions = rule.rule4(sentence, opinion_file)
+                # print("Extracted opinions by Rule 4: ", opinions)
+                # with open(opinion_file, "r+") as f:
+                #     for n in opinions:
+                #         if n not in f.read():
+                #             f.write(n + "\n")
+                # f.close()
 
     for review in reviews:
         review = preprocessing(review)
@@ -61,17 +56,17 @@ def double_propagation(reviews, target_file, opinion_file):
             sentences = sent_tokenize(str(review))
             for sentence in sentences:
                 print(sentence)
-                targets = rule.rule3(sentence, target_file)
-                print("Extracted targets by Rule 3:", targets)
-                with open(target_file, "r+") as f:
-                    for n in targets:
-                        if n not in f.read():
-                            f.write(n + "\n")
-                f.close()
+
+                # targets = rule.rule3(sentence, target_file)
+                # print("Extracted targets by Rule 3:", targets)
+                # with open(target_file, "r+") as f:
+                #     for n in targets:
+                #         f.write(n + "\n")
+                # f.close()
 
                 opinions = rule.rule2(sentence, target_file)
-                print("Extracted opinions by Rule 2:", targets)
-                with open(opinion_file, "r+") as f:
+                print("Extracted opinions by Rule 2:", opinions)
+                with open(opinion_file, "a+") as f:
                     for n in opinions:
                         if n not in f.read():
                             f.write(n + "\n")
