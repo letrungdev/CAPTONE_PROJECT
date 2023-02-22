@@ -1,70 +1,127 @@
 {
-    "phone": [
-        "phone"
+    "food": [
+        "food"
     ],
-    "screen": [
-        "screen",
-        "screens"
+    "service": [
+        "service"
+    ],
+    "staff": [
+        "staff"
+    ],
+    "restaurant": [
+        "restaurant",
+        "restaurants",
+        "restaurantbut"
+    ],
+    "time": [
+        "time"
+    ],
+    "atmosphere": [
+        "atmosphere"
+    ],
+    "menu": [
+        "menu",
+        "menus"
+    ],
+    "place": [
+        "place",
+        "places",
+        "palace"
+    ],
+    "meal": [
+        "meal",
+        "meals"
+    ],
+    "dish": [
+        "dish"
+    ],
+    "chicken": [
+        "chicken"
+    ],
+    "pizza": [
+        "pizza"
+    ],
+    "value": [
+        "value"
+    ],
+    "review": [
+        "review"
+    ],
+    "evening": [
+        "evening",
+        "evenings"
+    ],
+    "night": [
+        "night"
+    ],
+    "dinner": [
+        "dinner"
+    ],
+    "portion": [
+        "portion"
+    ],
+    "wine list": [
+        "wine list"
+    ],
+    "thing": [
+        "thing",
+        "things",
+        "nothing"
     ],
     "quality": [
-        "quality",
-        "qualty"
+        "quality"
     ],
-    "camera": [
-        "camera",
-        "cameras"
+    "pork belly": [
+        "pork belly"
+    ],
+    "decor": [
+        "decor"
+    ],
+    "side": [
+        "side"
     ],
     "price": [
-        "price"
+        "price",
+        "rice"
     ],
-    "card": [
-        "card",
-        "cards"
+    "ice cream": [
+        "ice cream"
     ],
-    "features": [
-        "features",
-        "feature"
+    "salad": [
+        "salad"
     ],
-    "phones": [
-        "phones"
+    "waiter": [
+        "waiter",
+        "waiters"
     ],
-    "product": [
-        "product",
-        "products"
+    "breakfast": [
+        "breakfast"
     ],
-    "size": [
-        "size"
+    "cocktail": [
+        "cocktail"
     ],
-    "color": [
-        "color"
+    "table": [
+        "table",
+        "tables"
     ],
-    "memory": [
-        "memory"
+    "bar": [
+        "bar"
     ],
-    "sim": [
-        "sim",
-        "sims"
+    "day": [
+        "day",
+        "days"
     ],
-    "buttons": [
-        "buttons"
+    "setting": [
+        "setting",
+        "seating"
     ],
-    "work": [
-        "work"
+    "location": [
+        "location"
     ],
-    "display": [
-        "display"
+    "lamb": [
+        "lamb"
     ],
-    "volume": [
-        "volume"
-    ],
-    "button": [
-        "button"
-    ],
-    "keyboard": [
-        "keyboard"
-    ],
-    "pictures": [
-        "pictures",
-        "picture"
+    "experience": [
+        "experience"
     ]
 }

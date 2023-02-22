@@ -7,6 +7,7 @@ if __name__ == "__main__":
     opinion_file = "opinion-lexicon/opinion.txt"
     stop_word_file = "stop_word/stop_words.txt"
     target_frequency_file = "process/target_frequency.json"
+    target_dictionary_file = "process/target_dictionary.json"
     embeddings_file = "word-embeddings/pruned.word2vec.txt"
     evaluate_file = "Data/Restaurants_Train_v2.csv"
 
@@ -15,9 +16,9 @@ if __name__ == "__main__":
     # reviews = df["Review"].tolist()
     # extract_aspect(reviews, extract_target_file, opinion_file)
 
-    target_frequency(extract_target_file, stop_word_file, target_frequency_file)
+    # target_frequency(extract_target_file, stop_word_file, target_frequency_file)
 
-    target_dictionary(target_frequency_file, embeddings_file, target_frequency_file)
+    target_dictionary(target_frequency_file, embeddings_file, target_dictionary_file)
 
 
 

@@ -127,10 +127,10 @@ def target_sentiment_polarity_dictionary(train_file, target_opinion_file, dictio
                 for phrase in sentence.split(","):
                     extracted = extract_target_opinion(phrase, target_dictionary)
 
-                    for n in extracted:
-                        for
-                        if extracted[n] not in target_opinion_dictionary[n]["opinion"]:
-                            target_opinion_dictionary[n]["opinion"].append(extracted[n])
+                    # for n in extracted:
+                    #     for
+                    #     if extracted[n] not in target_opinion_dictionary[n]["opinion"]:
+                    #         target_opinion_dictionary[n]["opinion"].append(extracted[n])
 
 
 
