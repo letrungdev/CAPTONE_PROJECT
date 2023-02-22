@@ -44,10 +44,11 @@ def prunning(extracted_target_file, stop_word_file, embeddings):
     print(targets)
 
     targets = {i:targets[i] for i in targets if i not in g.read()}
-    with open('target_count.json', 'w') as f:
+    targets = dict(sorted(targets.items(), key=lambda x: x[1], reverse=True))
+    with open('process/target_count.json', 'w') as f:
         json.dump(targets, f, indent=4, ensure_ascii=False)
 
-    for n in range(15):
+    for n in range(30):
         target = max(targets, key=targets.get)
         try:
             top_target.append(target)
@@ -58,6 +59,6 @@ def prunning(extracted_target_file, stop_word_file, embeddings):
     other_targets = list(targets.keys())
     expand = expand_target(other_targets, top_target, embeddings)
     print(expand)
-    with open('target_dictionary.json', 'w') as fp:
+    with open('process/target_dictionary.json', 'w') as fp:
         json.dump(expand, fp, indent=4, ensure_ascii=False)
 

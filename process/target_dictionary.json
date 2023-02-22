@@ -1,0 +1,70 @@
+{
+    "phone": [
+        "phone"
+    ],
+    "screen": [
+        "screen",
+        "screens"
+    ],
+    "quality": [
+        "quality",
+        "qualty"
+    ],
+    "camera": [
+        "camera",
+        "cameras"
+    ],
+    "price": [
+        "price"
+    ],
+    "card": [
+        "card",
+        "cards"
+    ],
+    "features": [
+        "features",
+        "feature"
+    ],
+    "phones": [
+        "phones"
+    ],
+    "product": [
+        "product",
+        "products"
+    ],
+    "size": [
+        "size"
+    ],
+    "color": [
+        "color"
+    ],
+    "memory": [
+        "memory"
+    ],
+    "sim": [
+        "sim",
+        "sims"
+    ],
+    "buttons": [
+        "buttons"
+    ],
+    "work": [
+        "work"
+    ],
+    "display": [
+        "display"
+    ],
+    "volume": [
+        "volume"
+    ],
+    "button": [
+        "button"
+    ],
+    "keyboard": [
+        "keyboard"
+    ],
+    "pictures": [
+        "pictures",
+        "picture"
+    ]
+}

@@ -1,4 +1,4 @@
-from rule import SC
+from rule import SC, modify_noun_pos
 import numpy as np
 from nltk.tokenize import sent_tokenize
 import json
@@ -26,20 +26,26 @@ def extract(review, aspect_dictionary):
     for sentence in sentences:
         print(sentence)
         tokenize, pos, dependency = SC(sentence)
+        pos = modify_noun_pos(pos)
         tokenize = np.array(tokenize)
         for index, i in enumerate(pos):
             if i[1] in noun_pos:
                 for aspect in aspect_dictionary:
                     if i[0] in aspect_dictionary[aspect]:
-                        for j in dependency:
-                            if j[0] in MR:
-                                if j[2] == (index + 1):
-                                    relate_word_position = j[1]
-                                    if pos[relate_word_position - 1][1] in adj_pos:
-                                        o = tokenize[relate_word_position - 1]
-                                        if o not in extracted[aspect]:
-                                            extracted[aspect].append(o)
-
+                        if len(i[0].split()) == 1:
+                            for j in dependency:
+                                if j[0] in MR:
+                                    if j[2] == (index + 1):
+                                        relate_word_position = j[1]
+                                        if pos[relate_word_position - 1][1] in adj_pos:
+                                            o = tokenize[relate_word_position - 1]
+                                            if o not in extracted[aspect]:
+                                                extracted[aspect].append(o)
+                            else:
+                                for n in pos[index+1:]:
+                                    if n[1] in adj_pos:
+                                        extracted[aspect].append(n[0])
+                                        break
     return extracted
 
 

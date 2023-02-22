@@ -1,28 +1,24 @@
-from double_propagation import double_propagation
-from prunning import prunning
-from opinion_for_aspect import opinion_for_aspect
-from extract import extract
 import pandas as pd
-
+from process import extract_aspect, target_frequency, target_dictionary
 
 if __name__ == "__main__":
-    review_file = "Data/Amazon_Mobile_Review.csv"
-    extracted_target_file = "extracted/target.txt"
-    extracted_opinion_file = "extracted/opinion.txt"
+    train_file = "Data/Train/restaurant_train.csv"
+    extract_target_file = "extracted/target.txt"
+    opinion_file = "opinion-lexicon/opinion.txt"
     stop_word_file = "stop_word/stop_words.txt"
-    embeddings = "word-embeddings/pruned.word2vec.txt"
-    aspect_dictionary_file = "target_dictionary.json"
+    target_frequency_file = "process/target_frequency.json"
+    embeddings_file = "word-embeddings/pruned.word2vec.txt"
+    evaluate_file = "Data/Restaurants_Train_v2.csv"
 
-    df = pd.read_csv(review_file)
-    reviews = df["Reviews"].tolist()
+    df = pd.read_csv(train_file)
 
-    # extract new target and opinion word to extracted folder
-    # double_propagation(reviews, extracted_target_file, extracted_opinion_file)
+    # reviews = df["Review"].tolist()
+    # extract_aspect(reviews, extract_target_file, opinion_file)
 
-    # prunning(extracted_target_file, stop_word_file, embeddings)
+    target_frequency(extract_target_file, stop_word_file, target_frequency_file)
 
-    # extract target with opinion
-    opinion_for_aspect(reviews[:10], aspect_dictionary_file)
+    target_dictionary(target_frequency_file, embeddings_file, target_frequency_file)
+
 
 
 
