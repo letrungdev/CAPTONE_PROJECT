@@ -1,0 +1,107 @@
+{
+    "food": [
+        "food"
+    ],
+    "service": [
+        "service",
+        "servive"
+    ],
+    "staff": [
+        "staff"
+    ],
+    "atmosphere": [
+        "atmosphere",
+        "athmosphere"
+    ],
+    "restaurant": [
+        "restaurant",
+        "restaurants",
+        "restaurantbut"
+    ],
+    "place": [
+        "place",
+        "places",
+        "palace"
+    ],
+    "meal": [
+        "meal",
+        "meals"
+    ],
+    "value": [
+        "value"
+    ],
+    "experience": [
+        "experience"
+    ],
+    "menu": [
+        "menu"
+    ],
+    "time": [
+        "time",
+        "times"
+    ],
+    "pizza": [
+        "pizza",
+        "pizzas"
+    ],
+    "welcome": [
+        "welcome"
+    ],
+    "portion": [
+        "portion",
+        "portions"
+    ],
+    "breakfast": [
+        "breakfast"
+    ],
+    "table": [
+        "table",
+        "tables"
+    ],
+    "wine list": [
+        "wine list"
+    ],
+    "chicken": [
+        "chicken"
+    ],
+    "price": [
+        "price",
+        "prices",
+        "rice",
+        "ice"
+    ],
+    "dinner": [
+        "dinner"
+    ],
+    "cocktail": [
+        "cocktail",
+        "cocktails"
+    ],
+    "decor": [
+        "decor",
+        "deco"
+    ],
+    "evening": [
+        "evening",
+        "evenings"
+    ],
+    "thing": [
+        "thing",
+        "things"
+    ],
+    "quality": [
+        "quality"
+    ],
+    "review": [
+        "review",
+        "reviews",
+        "views",
+        "reviewers"
+    ],
+    "pork belly": [
+        "pork belly"
+    ],
+    "family": [
+        "family"
+    ]
+}
